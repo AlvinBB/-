@@ -37,7 +37,7 @@ $ webpack test.js test.bundle.js
 ```
 - 如果文件中引入了css等其他文件，则需要使用lodaer来处理引用，首先引入lodaer（以css-loader和style-loader为例），然后打包时设置参数
 
-
+```javascript
     require('./world.js')   //引入的js文件
     require('./style.css')  //引入的css文件
         
@@ -46,6 +46,7 @@ $ webpack test.js test.bundle.js
     }
         
     hello('hello world!')
+```
 ``` bash
 $ npm install css-loader style-loader --save-dev
 $ webpack hello.js hello.bundle.js --module-bind 'css=style-loader!css-loader'
@@ -55,13 +56,16 @@ $ webpack hello.js hello.bundle.js --module-bind 'css=style-loader!css-loader'
     * entry
     
         1.值可以是字符串，表示只有一个入口文件
+        
         2.值可以是数组，多个入口文件
+        
         3.值可以是对象，多页面时可以使用，不同的页面配置不同入口（需要和output配合使用）
+        
     * output
     
         1.当entry对象有多个值时，output可以使用[name]-[hash]占位符来生成多个文件
         
-    
+```javascript
     module.exports ={
         entry:'./src/script/main.js',
         output:{
@@ -69,10 +73,10 @@ $ webpack hello.js hello.bundle.js --module-bind 'css=style-loader!css-loader'
             filename:'bundle.js'
         }
     }
-    
+```    
 - 如果该配置内容在命令行运行webpack后报错，需要设置绝对路径，则解决办法：引入path模块，指定绝对路径
 
-
+```javascript
     const path = require('path')
     
     module.exports ={
@@ -82,18 +86,18 @@ $ webpack hello.js hello.bundle.js --module-bind 'css=style-loader!css-loader'
             filename:'bundle.js'
         }
     }
-    
+```
 - 可以在package.json中配置script（允许加参数，如打包进度，打包模块，字体颜色，打包原因等），则打包只需在命令行输入npm run webpack
 
-
+```javascript
     "scripts": {
         "webpack":"webpack --config webpack.config.js --progress --display-modules --colors --display-reasons"
-      },
-      
+      }
+ ```     
 - 当多个页面配置webpack.config.js时，output使用[name]-[hash]占位符来生成多个文件，为避免手动修改index.html中对script标签引用的修改，可以使用html-webpack-plugin插件，自动生成script引用（该处若webpack为全局安装，该插件安装时会报Cannot find module 'webpack/lib/node/NodeTemplatePlugin'的错误，解决办法是在项目文件中再安装局部webpack并配置package.json）
 
 
-
+```javascript
     //webpack.config.js
     const path = require('path')
     const htmlWebpackPlugin = require('html-webpack-plugin')
@@ -115,8 +119,9 @@ $ webpack hello.js hello.bundle.js --module-bind 'css=style-loader!css-loader'
             })
         ]
     }
-    
+```
+```html
     //生成的index.html
     <script type="text/javascript" src="main-49c47b846785db3afd3b.js">
     </script><script type="text/javascript" src="main2-49c47b846785db3afd3b.js"></script>
-    
+```    

@@ -48,19 +48,33 @@
  function calcSize(inputNum) {
 
   var unitObj = {
+<<<<<<< HEAD
    gb : [Math.pow(1024, 3), Infinity],
    mb : [Math.pow(1024, 2), Math.pow(1024, 3)],
    kb : [1024, Math.pow(1024, 2)]
   }
 
   //for in 循环没有先后顺序
+=======
+   gb : Math.pow(1024, 3),
+   mb : Math.pow(1024, 2),
+   kb : 1024
+  }
+
+>>>>>>> origin/master
   for (var key in unitOjb) {
    
    var unit = unitObj[key]   
 
+<<<<<<< HEAD
    if (inputNum >= unit[0] && inputNum < unit[1]) {
     return ((inputNum / unit[0]).toFixed(1) + key)
    }
+=======
+   if (inputNum >= unit) {
+    return ((inputNum / unit).toFixed(1) + key
+   }    
+>>>>>>> origin/master
 
   }
 

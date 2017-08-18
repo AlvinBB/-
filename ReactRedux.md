@@ -9,6 +9,21 @@
 - Redux 除了和 React 一起用外，还支持其它界面库。
 - 它体小精悍（只有2kB）且没有任何依赖。
 
+### 不需要使用redux的情况
+
+- 用户的使用方式非常简单
+- 用户之间没有协作
+- 不需要与服务器大量交互，也没有使用 WebSocket
+- 视图层（View）只从单一来源获取数据
+
+### 需要使用redux的情况
+
+- 用户的使用方式复杂
+- 不同身份的用户有不同的使用方式（比如普通用户和管理员）
+- 多个用户之间可以协作
+- 与服务器大量交互，或者使用了WebSocket
+- View要从多个来源获取数据
+
 ## 要点
 
 - 应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。
@@ -212,4 +227,39 @@ import todoApp from './reducers'
 let store = createStore(todoApp)
 
 ````
+
+### createStore 原理
+
+````javascript
+
+const createStore = (reducer) => {
+    let state;
+    let listeners = [];
+    
+    const getState = () => { 
+        return state;
+    }
+    
+    const dispatch = (action) => {
+        state = reducer(state, action);
+        listeners.forEach(listener => listener());
+    }
+    
+    const subscribe = (listener) => {
+        listener.push(listener);
+        return () => {
+            listeners = listeners.filter(l => l !=listener);
+        }
+    };
+    
+    dispatch({});
+    
+    return { getState, dispatch, subscribe };
+};
+
+````
+
+### 生命周期
+
+> State至View层，通过store.subscribe(listener)来推入回调函数
 

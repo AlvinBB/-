@@ -5,7 +5,7 @@
 > 谷歌/Airbnb 对于代码规范的要求基本可以算业内规范了，直接参考即可
   [Airbnb JavaScript Style Guide](http://airbnb.io/javascript/)，
   [Airbnb React/JSX Style Guide](http://airbnb.io/javascript/react/)，
-  [Google JavaScript Style Guide](http://es6.ruanyifeng.com/#docs/symbol)
+  [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
   
 ## ESLint
 

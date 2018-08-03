@@ -19,7 +19,7 @@
 $ npm install -g eslint
 ```
 
-2.配置.eslint文件放置在项目目录下
+2. 配置.eslint文件放置在项目目录下
 ```javascript
 {
   "extends": "eslint:recommended",
@@ -52,6 +52,6 @@ $ npm install -g eslint
 }
 ```
 
-3.VScode中打开js文件即可看到不符合规范的位置已标红
+3. VScode中打开js文件即可看到不符合规范的位置已标红
 
-4.使用 VScode 快捷键 Shift + Alt + F ，自动格式化代码
+4. 使用 VScode 快捷键 Shift + Alt + F ，自动格式化代码

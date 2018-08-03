@@ -3,8 +3,8 @@
 ## JS/JSX代码规范
 
 > 谷歌/Airbnb 对于代码规范的要求基本可以算业内规范了，直接参考即可
-  [Airbnb JavaScript Style Guide](http://airbnb.io/javascript/)
-  [Airbnb React/JSX Style Guide](http://airbnb.io/javascript/react/)
+  [Airbnb JavaScript Style Guide](http://airbnb.io/javascript/)，
+  [Airbnb React/JSX Style Guide](http://airbnb.io/javascript/react/)，
   [Google JavaScript Style Guide](http://es6.ruanyifeng.com/#docs/symbol)
   
 ## ESLint
